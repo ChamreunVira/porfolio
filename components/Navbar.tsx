@@ -1,18 +1,18 @@
-import Link from "next/link";
-import { ArrowUpRight, Menu } from "lucide-react";
-import { portfolio } from "@/data/portfolio";
+import Link from 'next/link';
+import { ArrowUpRight, Menu } from 'lucide-react';
+import { portfolio } from '@/data/portfolio';
 
 const links = [
-  { label: "About", href: "/about" },
-  { label: "Work", href: "/#work" },
-  { label: "Contact", href: "/#contact" },
+  { label: 'About', href: '/about' },
+  { label: 'Work', href: '/#work' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 export function Navbar() {
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <Link className="brand" href="#top" aria-label="Back to top">
+        <Link className="brand" href="/" aria-label="Back to top">
           <span className="brand__mark">CV</span>
           <span className="brand__name">Chamreun Vira</span>
         </Link>
