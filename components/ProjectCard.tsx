@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import type { PortfolioProject } from "@/types";
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+import type { PortfolioProject } from '@/types';
 
 type ProjectCardProps = {
   project: PortfolioProject;
@@ -18,7 +18,9 @@ export function ProjectCard({ project, number }: ProjectCardProps) {
           fill
           sizes="(max-width: 680px) 88vw, (max-width: 900px) 43vw, 38vw"
         />
-        <span className="project-card__image-label">View case study <ArrowUpRight aria-hidden="true" size={16} /></span>
+        <span className="project-card__image-label">
+          View case study <ArrowUpRight aria-hidden="true" size={16} />
+        </span>
       </Link>
       <div className="project-card__content">
         <div className="project-card__topline">
@@ -43,7 +45,13 @@ export function ProjectCard({ project, number }: ProjectCardProps) {
               <ArrowUpRight aria-hidden="true" size={16} />
             </Link>
             {project.liveUrl ? (
-              <a className="project-card__link" href={project.liveUrl} target="_blank" rel="noreferrer" aria-label={`Visit live ${project.title} site`}>
+              <a
+                className="project-card__link"
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Visit live ${project.title} site`}
+              >
                 <span>Live site</span>
                 <ArrowUpRight aria-hidden="true" size={16} />
               </a>
