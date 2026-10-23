@@ -9,6 +9,9 @@ import { certificates, portfolio } from "@/data/portfolio";
 export const metadata: Metadata = {
   title: "About Chamreun Vira — Developer Portfolio",
   description: "Experience, education, certifications, and background for Chamreun Vira.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {

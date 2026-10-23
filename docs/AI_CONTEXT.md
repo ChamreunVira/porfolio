@@ -18,6 +18,7 @@
 - `/about` also renders `components/CertificateViewer.tsx` from `data/portfolio.ts` certificate assets. Certificates display as a normal grid; clicking one opens a zoom modal with zoom controls, backdrop/Escape close behavior, and responsive mobile layout.
 - Verified profile content is intentionally limited to the supplied name/images, the CV, the reference site URL, the public `ChamreunVira` GitHub handle, the named projects, and local project assets.
 - Root metadata uses `https://virachamreun.vercel.app` as its valid `metadataBase`, with the portfolio title `Chamreun Vira | Backend Developer Portfolio`; `app/icon.svg` provides the App Router favicon.
+- SEO also includes Person/WebSite JSON-LD in the root layout, explicit canonicals for `/about` and project pages, and generated `robots.txt` plus a sitemap covering every portfolio route.
 - `next.config.ts` uses the webpack type-check path (`experimental.useTypeScriptCli: false`) because this environment cannot parse the TypeScript CLI output during `next build`; keep the explicit `rtk proxy npm run build -- --webpack` verification path documented below.
 - `vercel.json` declares the deployment as Next.js and uses Bun install/build commands; do not configure Vercel's Output Directory as `dist`.
 
