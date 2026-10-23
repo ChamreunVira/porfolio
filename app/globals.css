@@ -69,6 +69,7 @@ summary {
 }
 .section-block {
   padding-block: 116px;
+  animation: section-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .eyebrow,
 .eyebrow-row,
@@ -445,6 +446,16 @@ summary {
   }
 }
 @keyframes intro-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes section-in {
   from {
     opacity: 0;
     transform: translateY(18px);
@@ -1430,11 +1441,25 @@ summary {
   overflow: hidden;
   border: var(--border);
   box-shadow: 7px 7px 0 var(--ink);
+  animation: card-in 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease;
 }
-.project-card:hover {
+.project-card:nth-child(1) {
+  animation-delay: 80ms;
+}
+.project-card:nth-child(2) {
+  animation-delay: 150ms;
+}
+.project-card:nth-child(3) {
+  animation-delay: 220ms;
+}
+.project-card:nth-child(4) {
+  animation-delay: 290ms;
+}
+.project-card:hover,
+.project-card:focus-within {
   transform: translate(3px, 3px);
   box-shadow: 4px 4px 0 var(--ink);
 }
@@ -1568,7 +1593,18 @@ summary {
 .project-card__link:hover svg {
   transform: translate(2px, -2px);
 }
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .project-note {
+  grid-column: 1 / -1;
   min-height: 220px;
   display: flex;
   align-items: flex-end;
@@ -1577,6 +1613,7 @@ summary {
   padding: 27px;
   background: var(--green);
   border: var(--border);
+  box-shadow: 7px 7px 0 var(--ink);
 }
 .project-note__mark {
   align-self: flex-start;

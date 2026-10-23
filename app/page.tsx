@@ -93,11 +93,12 @@ export default function Home() {
             index="01"
             eyebrow="A little context"
             title="About the person behind the pixels."
+            titleId="about-title"
             description="A compact introduction, without the performance."
           />
           <div className="about-grid">
             <div className="about-grid__statement">
-              <p className="display-copy" id="about-title">
+              <p className="display-copy">
                 Backend-minded. <span>Product curious.</span>
               </p>
               <p className="body-copy">{portfolio.description}</p>
@@ -160,9 +161,10 @@ export default function Home() {
             index="02"
             eyebrow="Selected work"
             title="Small archive, strong point of view."
+            titleId="work-title"
             description="A workbench for the things already in motion."
           />
-          <div className="project-grid" id="work-title">
+          <div className="project-grid">
             {portfolio.projects.map((project, index) => (
               <ProjectCard project={project} number={String(index + 1).padStart(2, '0')} key={project.title} />
             ))}
