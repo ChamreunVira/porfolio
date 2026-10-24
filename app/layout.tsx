@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   keywords: [
     'Chamreun Vira',
     'Vira Chamreun',
+    'Chamreun vira',
+    'Vira',
     'Developer Portfolio Cambodia',
     'Backend Developer Cambodia',
     'Backend Developer Phnom Penh',
@@ -28,8 +30,6 @@ export const metadata: Metadata = {
     'Full Stack Developer Cambodia',
     'Software Developer Portfolio',
     'REST API Development',
-    'PostgreSQL',
-    'MongoDB',
     'អ្នកអភិវឌ្ឍន៍កម្មវិធី',
     'អ្នកអភិវឌ្ឍន៍ Backend',
     'អ្នកសរសេរកម្មវិធីនៅកម្ពុជា',

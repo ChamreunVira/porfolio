@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, GitBranch } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { ProjectGallery } from "@/components/ProjectGallery";
@@ -65,11 +65,26 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="tag-list" aria-label={`${project.title} categories`}>
               {project.technologies.map((technology) => <span className="tag" key={technology}>{technology}</span>)}
             </div>
-            {project.liveUrl ? (
-              <a className="project-detail__live-link" href={project.liveUrl} target="_blank" rel="noreferrer">
-                View live site <ArrowUpRight aria-hidden="true" size={16} />
-              </a>
-          ) : null}
+            {project.liveUrl || project.sourceUrl ? (
+              <div className="project-detail__actions">
+                {project.liveUrl ? (
+                  <a className="project-detail__action" href={project.liveUrl} target="_blank" rel="noreferrer">
+                    View live site <ArrowUpRight aria-hidden="true" size={16} />
+                  </a>
+                ) : null}
+                {project.sourceUrl ? (
+                  <a
+                    className="project-detail__action"
+                    href={project.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`View ${project.title} source code on GitHub`}
+                  >
+                    View source code <GitBranch aria-hidden="true" size={16} />
+                  </a>
+                ) : null}
+              </div>
+            ) : null}
           </div>
           <div className="project-detail__cover">
             <Image src={project.cover.src} alt={project.cover.alt} fill priority sizes="(max-width: 680px) 88vw, 52vw" />

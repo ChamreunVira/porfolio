@@ -15,6 +15,7 @@ export type PortfolioProject = {
   description: string;
   technologies: string[];
   liveUrl?: string;
+  sourceUrl?: string;
   cover: ProjectImage;
   gallery: ProjectImage[];
   tone: "yellow" | "pink" | "blue" | "paper";

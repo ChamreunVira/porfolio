@@ -118,9 +118,11 @@ summary {
 }
 
 .site-header {
-  position: absolute;
+  position: fixed;
   z-index: 10;
   inset: 0 0 auto;
+  width: 100%;
+  background: var(--paper);
 }
 .site-header__inner {
   width: min(calc(100% - 48px), var(--max-width));
@@ -494,7 +496,7 @@ summary {
 }
 @keyframes ticker {
   from {
-    transform: translateX(0);
+    transform: translateX(100vw);
   }
   to {
     transform: translateX(-50%);
@@ -1314,13 +1316,9 @@ summary {
   color: var(--ink);
 }
 .skills-panel__intro-icon svg {
+  display: block;
   width: 20px;
   height: 20px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.8;
 }
 .skills-panel__list {
   display: grid;
@@ -1358,13 +1356,9 @@ summary {
   color: var(--ink);
 }
 .skill-item__icon svg {
+  display: block;
   width: 17px;
   height: 17px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.7;
 }
 .skill-item strong {
   min-width: 0;
@@ -1651,12 +1645,16 @@ summary {
   align-items: center;
   padding-block: 75px 100px;
 }
+.project-detail__copy {
+  min-width: 0;
+}
 .project-detail__copy h1 {
-  max-width: 570px;
+  max-width: 100%;
   margin: 19px 0 25px;
   font-size: clamp(3.3rem, 7.5vw, 7.8rem);
   line-height: 0.86;
   letter-spacing: -0.09em;
+  overflow-wrap: break-word;
 }
 .project-detail__copy > p {
   max-width: 450px;
@@ -1665,11 +1663,16 @@ summary {
   font-size: 1.05rem;
   line-height: 1.6;
 }
-.project-detail__live-link {
+.project-detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-top: 25px;
+}
+.project-detail__action {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  margin-top: 25px;
   border-bottom: 1px solid var(--ink);
   padding-bottom: 4px;
   font-size: 0.78rem;
