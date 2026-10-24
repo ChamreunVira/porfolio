@@ -126,7 +126,7 @@ export const portfolio: PortfolioProfile = {
     },
     {
       id: 'ecommerce',
-      title: 'Ecommerce',
+      title: 'vSt4re KH',
       eyebrow: 'Commerce experience / 02',
       description:
         'A storefront interface with product discovery, campaign-led merchandising, catalog controls, and a clear shopping path.',
