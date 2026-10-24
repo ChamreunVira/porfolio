@@ -159,6 +159,8 @@ export const portfolio: PortfolioProfile = {
       description:
         'A social platform interface for sharing posts, discovering people, and keeping everyday conversations close to home.',
       technologies: ['Social platform', 'Khmer UI', 'Community'],
+      sourceUrl: 'https://github.com/ChamreunVira/khmer-social-web.git',
+      liveUrl: 'https://khmer-social.vercel.app',
       cover: {
         src: '/assets/projects/social_preview.png',
         alt: 'Khmer Social platform feed preview',
@@ -178,11 +180,13 @@ export const portfolio: PortfolioProfile = {
     },
     {
       id: 'bacii-calculator',
-      title: 'BACII Calculator',
+      title: 'BACII',
       eyebrow: 'Calculation tool / 04',
       description:
-        'A Khmer-first calculation dashboard with score inputs, progress cards, history controls, and localized navigation.',
+        'A Khmer-first calculation dashboard wsfsdfith score inputs, progress cards, history controls, and localized navigation.',
       technologies: ['Calculator', 'Dashboard UI', 'Khmer-first'],
+      sourceUrl: 'https://github.com/ChamreunVira/bacii-grade-calculate.git',
+      liveUrl: 'http://bacii.online',
       cover: {
         src: '/assets/projects/bacii_preview.png',
         alt: 'BACII Calculator dashboard preview',

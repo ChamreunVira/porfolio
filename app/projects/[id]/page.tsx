@@ -69,66 +69,66 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           aria-labelledby="project-title"
         >
           <Reveal className="col-span-full grid grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] items-center gap-[clamp(35px,7vw,100px)] max-[680px]:flex max-[680px]:flex-col max-[680px]:items-stretch max-[680px]:gap-12">
-          <div className="min-w-0">
-            <span className="font-mono text-[0.68rem] uppercase tracking-[0.08em]">{project.eyebrow}</span>
-            <h1
-              className="mb-[25px] mt-[19px] max-w-full text-[clamp(3.3rem,7.5vw,7.8rem)] leading-[0.86] tracking-[-0.09em] [overflow-wrap:break-word] max-[680px]:text-[clamp(3.7rem,17vw,6.5rem)]"
-              id="project-title"
-            >
-              {project.title}
-            </h1>
-            <p className="mb-7 mt-0 max-w-[450px] text-[1.05rem] leading-[1.6] text-[var(--muted)]">
-              {project.description}
-            </p>
-            <div className="flex flex-wrap gap-1.5" aria-label={`${project.title} categories`}>
-              {project.technologies.map((technology) => (
-                <span
-                  className="border border-[var(--ink)] bg-[var(--paper)] px-2 py-1.5 font-mono text-[0.61rem]"
-                  key={technology}
-                >
-                  {technology}
-                </span>
-              ))}
-            </div>
-            {project.liveUrl || project.sourceUrl ? (
-              <div className="mt-[25px] flex flex-wrap gap-x-5 gap-y-3">
-                {project.liveUrl ? (
-                  <a
-                    className="inline-flex items-center gap-[7px] border-b border-[var(--ink)] pb-1 text-[0.78rem] font-extrabold"
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
+            <div className="min-w-0">
+              <span className="font-mono text-[0.68rem] uppercase tracking-[0.08em]">{project.eyebrow}</span>
+              <h1
+                className="mb-[25px] mt-[19px] max-w-full text-[clamp(3.3rem,7.5vw,7.8rem)] leading-[0.86] tracking-[-0.09em] [overflow-wrap:break-word] max-[680px]:text-[clamp(3.7rem,17vw,6.5rem)]"
+                id="project-title"
+              >
+                {project.title}
+              </h1>
+              <p className="mb-7 mt-0 max-w-[450px] text-[1.05rem] leading-[1.6] text-[var(--muted)]">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-1.5" aria-label={`${project.title} categories`}>
+                {project.technologies.map((technology) => (
+                  <span
+                    className="border border-[var(--ink)] bg-[var(--paper)] px-2 py-1.5 font-mono text-[0.61rem]"
+                    key={technology}
                   >
-                    View live site <ArrowUpRight aria-hidden="true" size={16} />
-                  </a>
-                ) : null}
-                {project.sourceUrl ? (
-                  <a
-                    className="inline-flex items-center gap-[7px] border-b border-[var(--ink)] pb-1 text-[0.78rem] font-extrabold"
-                    href={project.sourceUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`View ${project.title} source code on GitHub`}
-                  >
-                    View source code <GitBranch aria-hidden="true" size={16} />
-                  </a>
-                ) : null}
+                    {technology}
+                  </span>
+                ))}
               </div>
-            ) : null}
-          </div>
-          <div className="group/project-cover relative aspect-[16/10] overflow-hidden border-2 border-[var(--ink)] bg-[var(--paper)] shadow-[7px_7px_0_var(--ink)] max-[680px]:aspect-[4/3]">
-            <Image
-              src={project.cover.src}
-              alt={project.cover.alt}
-              fill
-              priority
-              className="object-cover transition-transform duration-500 ease-out group-hover/project-cover:scale-[1.02]"
-              sizes="(max-width: 680px) 88vw, 52vw"
-            />
-            <span className="absolute bottom-[17px] right-[17px] grid size-[45px] place-items-center border-2 border-[var(--ink)] bg-[var(--yellow)] font-mono text-[0.7rem] font-extrabold">
-              {String(projectIndex + 1).padStart(2, '0')}
-            </span>
-          </div>
+              {project.liveUrl || project.sourceUrl ? (
+                <div className="mt-[25px] flex flex-wrap gap-x-5 gap-y-3">
+                  {project.liveUrl ? (
+                    <a
+                      className="inline-flex items-center gap-[7px] border-b border-[var(--ink)] pb-1 text-[0.78rem] font-extrabold"
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View live site <ArrowUpRight aria-hidden="true" size={16} />
+                    </a>
+                  ) : null}
+                  {project.sourceUrl ? (
+                    <a
+                      className="inline-flex items-center gap-[7px] border-b border-[var(--ink)] pb-1 text-[0.78rem] font-extrabold"
+                      href={project.sourceUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`View ${project.title} source code on GitHub`}
+                    >
+                      View source code <GitBranch aria-hidden="true" size={16} />
+                    </a>
+                  ) : null}
+                </div>
+              ) : null}
+            </div>
+            <div className="group/project-cover relative aspect-[16/10] overflow-hidden border-2 border-[var(--ink)] bg-[var(--paper)] shadow-[7px_7px_0_var(--ink)] max-[680px]:aspect-[4/3]">
+              <Image
+                src={project.cover.src}
+                alt={project.cover.alt}
+                fill
+                priority
+                className="object-cover transition-transform duration-500 ease-out group-hover/project-cover:scale-[1.02]"
+                sizes="(max-width: 680px) 88vw, 52vw"
+              />
+              <span className="absolute bottom-[17px] right-[17px] grid size-[45px] place-items-center border-2 border-[var(--ink)] bg-[var(--yellow)] font-mono text-[0.7rem] font-extrabold">
+                {String(projectIndex + 1).padStart(2, '0')}
+              </span>
+            </div>
           </Reveal>
         </section>
 
