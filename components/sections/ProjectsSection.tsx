@@ -1,153 +1,139 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useMemo, useState } from "react";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Tape } from "@/components/ui/Tape";
-import { TechChip } from "@/components/ui/TechChip";
-import { Wireframe } from "@/components/ui/Wireframe";
-import { getTechSkills, projectFilters, projects } from "@/data/portfolioData";
-import { cn } from "@/lib/cn";
-import { formatProjectTag } from "@/lib/format";
+import Link from 'next/link';
+import Image from 'next/image';
+import { useMemo, useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import { Tape } from '@/components/ui/Tape';
+import { Wireframe } from '@/components/ui/Wireframe';
+import { getTechSkills, projectFilters, projects } from '@/data/portfolioData';
+import { cn } from '@/lib/cn';
 
 export function ProjectsSection() {
-  const [activeFilterId, setActiveFilterId] = useState<string>("all");
-  const [expandedSlug, setExpandedSlug] = useState<string | null>(null);
+  const [activeFilterId, setActiveFilterId] = useState<string>('all');
 
   const visibleProjects = useMemo(
     () =>
-      activeFilterId === "all"
-        ? projects
-        : projects.filter((project) => project.techStackIds.includes(activeFilterId)),
+      activeFilterId === 'all' ? projects : projects.filter((project) => project.techStackIds.includes(activeFilterId)),
     [activeFilterId],
   );
-
-  function handleFilterChange(filterId: string) {
-    setActiveFilterId(filterId);
-    setExpandedSlug(null);
-  }
-
-  function handleToggleProject(slug: string) {
-    setExpandedSlug((currentSlug) => (currentSlug === slug ? null : slug));
-  }
 
   return (
     <section id="projects" aria-labelledby="projects-title" className="page-container py-16">
       <SectionHeading id="projects-title" title="Projects" note="// stuff i actually built" />
 
-      <div className="mb-6 flex flex-wrap items-center gap-3">
+      {/* Filter Tabs */}
+      <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-dashed border-ink/20 pb-4">
         <div role="group" aria-label="Filter projects by technology" className="flex flex-wrap gap-2">
-          {projectFilters.map((filter) => (
-            <button
-              key={filter.id}
-              type="button"
-              aria-pressed={activeFilterId === filter.id}
-              onClick={() => handleFilterChange(filter.id)}
-              className={cn(
-                "border border-ink px-3 py-1.5 font-mono text-mono-tag transition-colors",
-                activeFilterId === filter.id ? "bg-ink text-paper" : "bg-paper text-ink-soft hover:bg-card",
-              )}
-            >
-              {filter.label}
-            </button>
-          ))}
-        </div>
-        <span className="font-hand text-hand-note text-pen">// click a card to expand ↓</span>
-      </div>
-
-      <ul className="space-y-6">
-        {visibleProjects.map((project) => {
-          const isExpanded = expandedSlug === project.slug;
-          const panelId = `project-panel-${project.slug}`;
-
-          return (
-            <li key={project.slug} className="border border-ink bg-card shadow-crisp-sm">
-              <h3>
-                <button
-                  type="button"
-                  aria-expanded={isExpanded}
-                  aria-controls={panelId}
-                  onClick={() => handleToggleProject(project.slug)}
-                  className="flex w-full items-start justify-between gap-4 p-5 text-left sm:p-6"
-                >
-                  <span className="block">
-                    <span className="block font-mono text-mono-tag text-ink-soft">
-                      {formatProjectTag(project.index, projects.length)}
-                    </span>
-                    <span className="mt-2 block font-sans text-title text-ink">{project.title}</span>
-                    <span className="mt-2 block max-w-[34rem] font-sans text-body-sm text-ink-soft">
-                      {project.tagline}
-                    </span>
-                  </span>
-                  <ChevronDown
-                    className={cn("mt-1 h-5 w-5 shrink-0 transition-transform duration-300", isExpanded && "rotate-180")}
-                    aria-hidden="true"
-                  />
-                </button>
-              </h3>
-
-              <div
-                id={panelId}
-                inert={!isExpanded}
+          {projectFilters.map((filter) => {
+            const isActive = activeFilterId === filter.id;
+            return (
+              <button
+                key={filter.id}
+                type="button"
+                aria-pressed={isActive}
+                onClick={() => setActiveFilterId(filter.id)}
                 className={cn(
-                  "grid transition-[grid-template-rows] duration-300",
-                  isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+                  'border px-3.5 py-1.5 font-mono text-mono-tag transition-all',
+                  isActive
+                    ? 'border-ink bg-ink text-paper shadow-crisp-sm -translate-y-0.5'
+                    : 'border-ink/40 bg-paper text-ink-soft hover:border-ink hover:bg-card hover:text-ink',
                 )}
               >
-                <div className="overflow-hidden">
-                  <div className="grid gap-8 border-t border-ink px-5 pb-6 pt-6 sm:px-6 md:grid-cols-2">
-                    <div>
-                      <p className="font-sans text-body text-ink">{project.summary}</p>
-                      <ul className="mt-4 space-y-2">
-                        {project.keyFlows.map((flow) => (
-                          <li key={flow} className="flex gap-3 font-sans text-body-sm text-ink-soft">
-                            <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 bg-pen" />
-                            {flow}
-                          </li>
-                        ))}
-                      </ul>
-                      <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${project.title} tech stack`}>
-                        {getTechSkills(project.techStackIds).map((tech) => (
-                          <TechChip key={tech.id} tech={tech} />
-                        ))}
-                      </ul>
-                      <div className="mt-6 flex flex-wrap items-center gap-4">
-                        <Link
-                          href={`/projects/${project.slug}`}
-                          className="inline-flex items-center gap-2 border border-ink bg-ink px-4 py-2 font-mono text-mono-tag text-paper"
-                        >
-                          Read the case study →
-                        </Link>
-                        {project.liveUrl ? (
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 font-mono text-mono-tag text-ink underline underline-offset-4"
-                          >
-                            Live site
-                            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                          </a>
-                        ) : null}
-                      </div>
-                    </div>
+                {filter.label}
+              </button>
+            );
+          })}
+        </div>
+        <span className="font-hand text-hand-note text-red-500/90 rotate-[-1deg]">// Let see my work ✦</span>
+      </div>
 
-                    <figure className="relative mt-3 self-start border border-ink bg-paper p-2 shadow-crisp-sm md:mt-0">
-                      <Tape className="-top-3 left-1/2 -translate-x-1/2 rotate-1" />
+      {/* 2-Column Grid Layout matching reference card style */}
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        {visibleProjects.map((project) => {
+          const techList = getTechSkills(project.techStackIds);
+
+          return (
+            <article
+              key={project.slug}
+              className="group relative flex flex-col justify-between border-2 border-ink bg-card shadow-crisp-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md overflow-hidden"
+            >
+              <div>
+                {/* Top Banner / Preview Box (Like the Sayyesly reference card header) */}
+                <div className="relative">
+                  {/* Optional Tape at top center */}
+                  <Tape className="-top-3 left-1/2 -translate-x-1/2 rotate-1" />
+
+                  <div className="overflow-hidden border border-ink/40 bg-paper shadow-sm">
+                    {project.thumbnail ? (
+                      <Image
+                        src={project.thumbnail}
+                        alt={`${project.title} preview`}
+                        width={800}
+                        height={450}
+                        className="h-44 w-full object-cover transition-transform duration-300 group-hover:scale-102"
+                      />
+                    ) : (
                       <Wireframe
                         variant={project.heroVariant}
                         accentColor={project.accentColor}
-                        label={`${project.title} wireframe preview`}
+                        label={`${project.title} wireframe`}
                       />
-                    </figure>
+                    )}
+                  </div>
+                </div>
+
+                {/* Content Area Below */}
+                <div className="p-5 sm:p-6">
+                  {/* Handwritten Title in Red */}
+                  <h3 className="font-hand text-3xl font-bold text-red-600 tracking-wide">{project.title}</h3>
+
+                  {/* Description Paragraph */}
+                  <p className="mt-3 font-sans text-body-sm text-ink leading-relaxed">
+                    {project.tagline || project.summary}
+                  </p>
+
+                  {/* Text-based Tech Stack List (matching reference image style) */}
+                  <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-ink-soft">
+                    {techList.map((tech, idx) => (
+                      <span key={tech.id} className="inline-flex items-center">
+                        {tech.name}
+                        {idx < techList.length - 1 && <span className="ml-3 text-ink/20"></span>}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
-            </li>
+
+              {/* Bottom Action Bar */}
+              <div className="flex items-center justify-between border-t border-dashed border-ink/20 px-5 py-4 sm:px-6 bg-paper/30">
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="inline-flex items-center gap-1.5 border border-ink bg-ink px-4 py-2 font-mono text-mono-tag text-paper shadow-sm transition-transform hover:-translate-y-0.5"
+                >
+                  <span>details</span>
+                  <span>→</span>
+                </Link>
+
+                {project.liveUrl ? (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 font-mono text-mono-tag text-ink-soft hover:text-ink underline underline-offset-4"
+                  >
+                    live preview
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </a>
+                ) : (
+                  <span className="font-mono text-[11px] text-ink-soft/60">private release</span>
+                )}
+              </div>
+            </article>
           );
         })}
-      </ul>
+      </div>
     </section>
   );
 }

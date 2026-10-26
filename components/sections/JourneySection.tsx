@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { experienceItems, type ExperienceCategory } from "@/data/portfolioData";
-import { cn } from "@/lib/cn";
+import { useState } from 'react';
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import { experienceItems, type ExperienceCategory } from '@/data/portfolioData';
+import { cn } from '@/lib/cn';
 
 const badgeClassByCategory: Record<ExperienceCategory, string> = {
-  EDUCATION: "border-ink bg-paper text-ink",
-  CAREER: "border-ink bg-ink text-paper",
-  AWARD: "border-pen bg-pen text-paper",
+  EDUCATION: 'border-ink bg-paper text-ink',
+  CAREER: 'border-ink bg-ink text-paper',
+  AWARD: 'border-pen bg-pen text-paper',
 };
 
 const nodeClassByCategory: Record<ExperienceCategory, string> = {
-  EDUCATION: "bg-paper",
-  CAREER: "bg-ink",
-  AWARD: "bg-pen",
+  EDUCATION: 'bg-paper',
+  CAREER: 'bg-ink',
+  AWARD: 'bg-pen',
 };
 
 export function JourneySection() {
@@ -40,27 +40,29 @@ export function JourneySection() {
               <span
                 aria-hidden="true"
                 className={cn(
-                  "absolute -left-[2.55rem] top-6 h-4 w-4 rounded-full border-2 border-ink sm:-left-[3.05rem]",
+                  'absolute -left-[2.55rem] top-6 h-4 w-4 rounded-full border-2 border-ink sm:-left-[3.05rem]',
                   nodeClassByCategory[item.category],
                 )}
               />
               <article className="border border-ink bg-card p-5 shadow-crisp-sm sm:p-6">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <p className="font-mono text-mono-tag text-ink-soft">{item.period}</p>
-                  <span className={cn("border px-2 py-0.5 font-mono text-mono-tag", badgeClassByCategory[item.category])}>
+                  <span
+                    className={cn('border px-2 py-0.5 font-mono text-mono-tag', badgeClassByCategory[item.category])}
+                  >
                     {item.category}
                   </span>
                 </div>
                 <h3 className="mt-3 font-sans text-subtitle text-ink">{item.title}</h3>
                 <p className="font-sans text-body-sm text-ink-soft">{item.organization}</p>
-                <p className="mt-3 max-w-[40rem] font-sans text-body-sm text-ink">{item.summary}</p>
+                <p className="mt-3 max-w-160 font-sans text-body-sm text-ink">{item.summary}</p>
 
                 <div
                   id={drawerId}
                   inert={!isExpanded}
                   className={cn(
-                    "grid transition-[grid-template-rows] duration-300",
-                    isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+                    'grid transition-[grid-template-rows] duration-300',
+                    isExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
                   )}
                 >
                   <div className="overflow-hidden">
@@ -82,7 +84,7 @@ export function JourneySection() {
                   onClick={() => handleToggleItem(item.id)}
                   className="mt-4 font-mono text-mono-tag text-ink underline underline-offset-4"
                 >
-                  {isExpanded ? "View less ↑" : "View more →"}
+                  {isExpanded ? 'View less ↑' : 'View more →'}
                 </button>
               </article>
             </li>

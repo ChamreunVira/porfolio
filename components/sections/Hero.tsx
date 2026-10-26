@@ -1,11 +1,16 @@
-import { ArrowDown, GitBranch } from "lucide-react";
-import { Annotation } from "@/components/ui/Annotation";
-import { Tape } from "@/components/ui/Tape";
-import { profile } from "@/data/portfolioData";
+import { ArrowDown, GitBranch } from 'lucide-react';
+import { Annotation } from '@/components/ui/Annotation';
+import { Tape } from '@/components/ui/Tape';
+import { profile } from '@/data/portfolioData';
+import Image from 'next/image';
 
 export function Hero() {
   return (
-    <section id="top" aria-labelledby="hero-title" className="page-container grid gap-12 pb-16 pt-14 md:grid-cols-[3fr_2fr] md:items-center md:pt-20">
+    <section
+      id="top"
+      aria-labelledby="hero-title"
+      className="page-container grid gap-12 pb-16 pt-14 md:grid-cols-[3fr_2fr] md:items-center md:pt-20"
+    >
       <div>
         <Annotation className="mb-2">hi there, i&apos;m</Annotation>
         <h1 id="hero-title" className="font-hand text-hand-hero text-ink">
@@ -35,7 +40,23 @@ export function Hero() {
         </div>
       </div>
 
-      <aside aria-label="What is on my desk" className="relative mt-4 rotate-1 border border-ink bg-card p-6 pt-8 shadow-crisp md:mt-0">
+      <div className="space-y-10">
+        <figure className="relative mx-auto max-w-md rotate-1 border border-ink bg-card p-3 pb-4 shadow-crisp">
+          <Tape className="-top-3 left-1/2 -translate-x-1/2 -rotate-2" />
+          <Image
+            src={profile.photo.src}
+            alt={profile.photo.alt}
+            width={profile.photo.width}
+            height={profile.photo.height}
+            priority
+            sizes="(min-width: 768px) 28rem, 90vw"
+            className="block h-auto w-full border border-ink"
+          />
+          <figcaption className="mt-3 font-hand text-hand-note text-pen">{profile.photo.caption}</figcaption>
+        </figure>
+      </div>
+
+      {/* <aside aria-label="What is on my desk" className="relative mt-4 rotate-1 border border-ink bg-card p-6 pt-8 shadow-crisp md:mt-0">
         <Tape className="-top-3 left-1/2 -translate-x-1/2 -rotate-2" />
         <p className="mb-4 font-hand text-hand-note text-pen">on my desk right now</p>
         <dl className="space-y-3">
@@ -43,10 +64,10 @@ export function Hero() {
             <div key={item.label}>
               <dt className="font-mono text-mono-tag text-ink-soft">{item.label}</dt>
               <dd className="font-sans text-body-sm text-ink">{item.value}</dd>
-            </div>
+            </div>  
           ))}
         </dl>
-      </aside>
+      </aside> */}
     </section>
   );
 }
