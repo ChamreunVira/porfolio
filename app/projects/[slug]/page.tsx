@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { Annotation } from "@/components/ui/Annotation";
-import { SketchDivider } from "@/components/ui/SketchDivider";
-import { Tape } from "@/components/ui/Tape";
-import { TechChip } from "@/components/ui/TechChip";
-import { Wireframe } from "@/components/ui/Wireframe";
-import { getProjectBySlug, getTechSkills, projects } from "@/data/portfolioData";
-import { formatProjectTag } from "@/lib/format";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import { Annotation } from '@/components/ui/Annotation';
+import { ImageLightbox } from '@/components/ui/ImageLightbox';
+import { SketchDivider } from '@/components/ui/SketchDivider';
+import { Tape } from '@/components/ui/Tape';
+import { TechChip } from '@/components/ui/TechChip';
+import { getProjectBySlug, getTechSkills, projects } from '@/data/portfolioData';
+import { formatProjectTag } from '@/lib/format';
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const project = getProjectBySlug(slug);
 
   if (!project) {
-    return { title: "Project not found" };
+    return { title: 'Project not found' };
   }
 
   return { title: project.title, description: project.tagline };
@@ -49,7 +50,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <div>
           <p className="font-mono text-mono-tag text-ink-soft">{formatProjectTag(project.index, projects.length)}</p>
           <h1 className="mt-2 font-sans text-title text-ink">{project.title}</h1>
-          <p className="mt-2 max-w-[34rem] font-sans text-body text-ink-soft">{project.tagline}</p>
+          <p className="mt-2 max-w-136 font-sans text-body text-ink-soft">{project.tagline}</p>
         </div>
         {project.liveUrl ? (
           <a
@@ -65,10 +66,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <figure className="relative mb-16 mt-12 border border-ink bg-card p-3 shadow-crisp sm:p-4">
         <Tape className="-top-3.5 left-1/2 h-8 w-32 -translate-x-1/2 -rotate-1" />
-        <Wireframe
-          variant={project.heroVariant}
-          accentColor={project.accentColor}
-          label={`${project.title} featured screen`}
+        <Image
+          src={project.gallery[0].src}
+          alt={`${project.title} featured screen`}
+          width={1920}
+          height={1080}
+          className="h-auto max-h-[34rem] w-full object-contain"
+          priority
         />
         <Annotation className="absolute -bottom-10 right-2" tilt="right">
           the real thing
@@ -123,24 +127,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <h2 id="gallery-title" className="font-hand text-hand-heading text-ink">
           // More views
         </h2>
-        <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {project.gallery.map((image) => (
-            <li key={image.caption}>
-              <figure className="border border-ink bg-card p-2 shadow-crisp-sm">
-                <Wireframe
-                  variant={image.variant}
-                  accentColor={project.accentColor}
-                  label={`${project.title}: ${image.caption}`}
-                />
-                <figcaption className="px-1 pb-1 pt-3 font-mono text-mono-tag text-ink-soft">{image.caption}</figcaption>
-              </figure>
-            </li>
-          ))}
-        </ul>
+        <ImageLightbox images={project.gallery} projectTitle={project.title} />
       </section>
 
       <nav aria-label="Next project" className="mt-16 border-t border-ink pt-6">
-        <Link href={`/projects/${nextProject.slug}`} className="font-hand text-3xl text-ink underline-offset-4 hover:underline">
+        <Link
+          href={`/projects/${nextProject.slug}`}
+          className="font-hand text-3xl text-ink underline-offset-4 hover:underline"
+        >
           next up: {nextProject.title} →
         </Link>
       </nav>
