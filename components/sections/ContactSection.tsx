@@ -6,7 +6,7 @@ export function ContactSection() {
   return (
     <section id="contact" aria-labelledby="contact-title" className="page-container py-16">
       <SectionHeading id="contact-title" title="Say hi" note="// no form, just a link" />
-      <p className="max-w-[34rem] font-sans text-body text-ink-soft">
+      <p className="max-w-136 font-sans text-body text-ink-soft">
         Have a project, a question, or a bug in something I built? Open an issue or send a message on GitHub.
       </p>
       <div className="mt-6 flex flex-wrap gap-3">

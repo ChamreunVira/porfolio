@@ -82,7 +82,7 @@ export function JourneySection() {
                   aria-expanded={isExpanded}
                   aria-controls={drawerId}
                   onClick={() => handleToggleItem(item.id)}
-                  className="mt-4 font-mono text-mono-tag text-ink underline underline-offset-4"
+                  className="cursor-pointer mt-4 font-mono text-mono-tag text-ink underline underline-offset-4"
                 >
                   {isExpanded ? 'View less ↑' : 'View more →'}
                 </button>

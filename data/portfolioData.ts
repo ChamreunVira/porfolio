@@ -33,8 +33,8 @@ export interface TechSkill {
 }
 
 export interface GalleryImage {
+  src: string;
   caption: string;
-  variant: WireframeVariant;
 }
 
 export interface Project {
@@ -43,7 +43,7 @@ export interface Project {
   index: number;
   title: string;
   /** Optional real project preview shown in the project list. */
-  thumbnail?: string;
+  thumbnail: string;
   tagline: string;
   /** Leave undefined until the project is deployed; the Live button is hidden without it. */
   liveUrl?: string;
@@ -258,111 +258,148 @@ export function getTechSkills(techIds: string[]): TechSkill[] {
 
 export const projects: Project[] = [
   {
-    slug: 'journal',
+    slug: 'est4re',
     index: 1,
-    title: 'Journal',
-    thumbnail: '/images/Journal_Preview.png',
-    tagline: 'A bilingual academic journal platform for student research.',
-    liveUrl: 'https://journal-academic.vercel.app',
+    title: 'eSt4re',
+    thumbnail: '/projects/project-thumbnail/eSt4re_thumbnail.jpeg',
+    tagline: 'A full-stack e-commerce platform with inventory and QR payment integration.',
+    liveUrl: 'https://est4re.vercel.app',
     summary:
-      'Students submit papers, editors review them, and readers browse issues in two languages from one codebase.',
+      'A Laravel and Next.js e-commerce platform with product management, inventory tracking, order processing, and digital payments.',
     idea: [
-      'Student research rarely has a proper home. Papers get emailed around, reviews live in chat threads, and nothing ends up in a searchable archive. Journal gives a university one place for the whole life of a paper, from first submission to a published issue.',
-      'The frontend is a Next.js app with locale-prefixed routes such as /en, and an Express and MongoDB API behind it. Redux Toolkit thunks keep articles, categories and issues in a flat, predictable state so every page reads the same data the same way.',
-      'The design is deliberately quiet: black and white, sharp corners, one accent for the actions that matter, so the research is the loudest thing on the screen.',
+      'eSt4re provides an online shopping experience where customers can browse products, manage their shopping carts, place orders, and complete payments through QR-based payment integration.',
+      'The Laravel backend manages products, categories, customers, inventory, and orders, with PostgreSQL for data storage. Laravel Sanctum handles API authentication, while role-based access control separates customer and administrator permissions.',
+      'The platform integrates ABA PayWay Dynamic QR payments and supports order processing, stock management, and invoice generation to simplify daily e-commerce operations.',
     ],
     keyFlows: [
-      'A student registers, submits a paper, and tracks its review status.',
-      'An editor reviews a submission, requests changes, and assigns it to an issue.',
-      'A reader browses the current issue, searches the archive, and opens an article.',
+      'Customers browse products, manage their cart, and place orders.',
+      'Customers complete payments through QR-based payment integration.',
+      'Administrators manage products, categories, customers, inventory, and orders.',
+      'The system processes orders, updates stock, and generates invoices.',
     ],
-    techStackIds: ['next-js', 'typescript', 'redux-toolkit', 'tailwind', 'express', 'mongodb', 'i18n'],
-    accentColor: '#1c1b19',
-    heroVariant: 'journal',
+    techStackIds: ['laravel', 'php', 'postgresql', 'sanctum', 'next-js', 'typescript', 'tailwind', 'khqr'],
+    accentColor: '#e1232e',
+    heroVariant: 'storefront',
     gallery: [
-      { caption: 'Current issue', variant: 'journal' },
-      { caption: 'Editor dashboard', variant: 'dashboard' },
-      { caption: 'Reading on mobile', variant: 'mobile' },
+      { src: '/projects/estore_infront.png', caption: 'Online storefront' },
+      { src: '/projects/estore_product_management.png', caption: 'Product management' },
+      { src: '/projects/estore_order_management.png', caption: 'Order management' },
     ],
   },
   {
     slug: 'vst4re',
     index: 2,
     title: 'vSt4re',
-    thumbnail: '/images/vStr4re_KH_Preview.png',
-    tagline: 'An e-commerce platform that takes Bakong KHQR payments.',
-    summary: 'A Spring Boot and Next.js store with full order management and QR payments confirmed by signed webhooks.',
+    thumbnail: '/projects/project-thumbnail/vSt4re_thumbnail.png',
+    tagline: 'An e-commerce platform featuring Bakong KHQR payments.',
+    liveUrl: 'https://vst4re.vercel.app',
+    summary:
+      'A Spring Boot and Next.js store with order management, inventory control, and QR payments verified through secure webhooks.',
     idea: [
-      'Most shoppers in Cambodia pay with a bank app and a QR code, so checkout had to be built around KHQR rather than a card form. vSt4re generates a Bakong QR for each order, polls for its status, and confirms payment through an HMAC-verified webhook.',
-      'Orders are transactional on the Spring Boot side: stock is decremented, the cart is cleared, ownership is checked, and cancellation is restricted once an order moves forward. Webhooks are idempotent, so a repeated callback never double-charges or double-ships.',
-      'On the frontend, Next.js middleware verifies the JWT and routes people by role, while Spring Security stays the authority that actually enforces access.',
+      'vSt4re is an online shopping platform built around Cambodia’s QR payment experience. Customers can browse products, add items to their cart, and pay by scanning a Bakong KHQR code.',
+      'The Spring Boot backend handles product, inventory, customer, shipping, promotion, and order management. Order processing uses database transactions to maintain stock consistency, while payment webhooks use HMAC verification and idempotency to prevent duplicate processing.',
+      'The Next.js frontend uses JWT authentication and middleware for role-based navigation, while Spring Security enforces access control on the backend.',
     ],
     keyFlows: [
-      'A customer adds items to the cart, checks out, and scans a KHQR code to pay.',
-      'The order flips to paid when the payment webhook arrives, with no manual refresh.',
-      'An admin manages products, banners and orders behind role-based access.',
+      'Customers browse products, add items to their cart, and check out using KHQR.',
+      'Payment webhooks verify transactions and automatically update order status.',
+      'Administrators manage products, banners, inventory, and customer orders.',
     ],
     techStackIds: ['spring-boot', 'java', 'mongodb', 'khqr', 'jwt', 'next-js', 'typescript', 'tailwind'],
     accentColor: '#e1232e',
     heroVariant: 'storefront',
     gallery: [
-      { caption: 'KHQR checkout', variant: 'checkout' },
-      { caption: 'Admin dashboard', variant: 'dashboard' },
-      { caption: 'Shopping on mobile', variant: 'mobile' },
+      { src: '/projects/vstore_khqr_checkout.png', caption: 'KHQR checkout' },
+      { src: '/projects/estore_admin.png', caption: 'Admin dashboard' },
+      { src: '/projects/estore_shopping_mobile.png', caption: 'Shopping on mobile' },
+      { src: '/projects/estore_shipping_mobile.png', caption: 'Shipping on mobile' },
     ],
   },
   {
-    slug: 'bacii',
+    slug: 'journal',
     index: 3,
-    title: 'bacii',
-    thumbnail: '/images/BACII_Preview.png',
-    tagline: 'A full-stack web application, live at bacii.online.',
-    liveUrl: 'https://bacii.online',
-    summary: 'Designed and built end to end, from the database schema to the deployed frontend.',
+    title: 'Journal',
+    thumbnail: '/projects/project-thumbnail/Journal_thumbnail.jpeg',
+    tagline: 'A bilingual academic journal platform for student research.',
+    liveUrl: 'https://journal-academic.vercel.app',
+    summary:
+      'A university journal platform that supports research submissions, editorial reviews, and published academic issues in Khmer and English.',
     idea: [
-      'bacii is a web application I took from an empty repository to a public domain. That meant modelling the data, building the API, designing the screens and deploying it all myself.',
-      'Replace this paragraph with what bacii does for people and the main problem it solves. A good version names who uses it, what they were doing before, and what is faster or clearer now.',
-      'Replace this one with a technical decision you are proud of, for example how you structured the API, handled authentication, or kept the interface fast on slow connections.',
+      'Journal provides a centralized platform for university research, allowing students to submit academic papers and follow their publication progress instead of managing submissions through separate emails and messages.',
+      'The platform uses Next.js with bilingual routing through next-intl and an Express.js API connected to MongoDB. Redux Toolkit manages application data, while role-based permissions separate administrators, editors, and students.',
+      'The editorial workflow supports paper submissions, review processes, revision requests, acceptance, and publication. Editors can organize accepted research into academic issues for readers to explore.',
     ],
     keyFlows: [
-      'A new visitor signs up and reaches the main screen in a few steps.',
-      'A returning user picks up where they left off, on any device.',
-      'An admin manages content and accounts from one place.',
+      'Students register, submit research papers, and track their submission status.',
+      'Editors review submissions, request revisions, and manage publication decisions.',
+      'Administrators manage users, roles, categories, and journal issues.',
+      'Readers browse published issues and explore academic articles in Khmer and English.',
     ],
-    techStackIds: ['next-js', 'typescript', 'tailwind', 'spring-boot', 'java', 'postgresql'],
-    accentColor: '#336791',
-    heroVariant: 'dashboard',
+    techStackIds: ['next-js', 'typescript', 'redux-toolkit', 'tailwind', 'express', 'mongodb', 'i18n'],
+    accentColor: '#1c1b19',
+    heroVariant: 'journal',
     gallery: [
-      { caption: 'Main dashboard', variant: 'dashboard' },
-      { caption: 'Detail view', variant: 'journal' },
-      { caption: 'Mobile layout', variant: 'mobile' },
+      { src: '/projects/journal_01.png', caption: 'Current issue' },
+      { src: '/projects/journa_02.png', caption: 'Editor dashboard' },
+      { src: '/projects/journal_03.png', caption: 'Reading on mobile' },
     ],
   },
   {
     slug: 'khmer-social',
     index: 4,
     title: 'Khmer Social',
-    thumbnail: '/images/KhmerSocail_Preview.png',
-    tagline: 'A social network with a posts feed and friend requests.',
+    thumbnail: '/projects/project-thumbnail/KhmerSocial_thumbnail.jpeg',
+    tagline: 'A social networking platform for sharing posts and connecting with friends.',
     liveUrl: 'http://khmer-social.vercel.app',
-    summary: 'A Spring Boot API and a React, Vite and TypeScript client for sharing posts and building a friends list.',
+    summary:
+      'A Spring Boot and React social network featuring user profiles, posts, interactions, and friend relationship management.',
     idea: [
-      'Khmer Social is a full-stack social media app built to understand what makes a social product feel alive: a feed that loads fast, and relationships that behave the way people expect.',
-      'The friend system is a small state machine on the Spring Boot side. You can send a request, accept or reject it, list pending requests, and remove a friend, each as its own endpoint with the current user resolved by an auth service.',
-      'The React client uses a shared app context for the signed-in user and toast notifications, so every action answers back immediately.',
+      'Khmer Social is a social networking application designed to let users connect with others, share updates, and interact through a familiar social media experience.',
+      'The Spring Boot backend provides REST APIs for user profiles, posts, comments, likes, shares, and friend relationships. The friend system supports sending, accepting, rejecting, and removing friend requests.',
+      'The React frontend uses TypeScript and shared application context to manage authenticated user information and notifications, providing immediate feedback when users interact with the platform.',
     ],
     keyFlows: [
-      'A user publishes a post and sees it at the top of the feed.',
-      'A user sends a friend request, and the receiver accepts or rejects it.',
-      'A user opens their friends list and removes a friend.',
+      'Users create profiles, publish posts, and browse the social feed.',
+      'Users interact with posts through comments, likes, and shares.',
+      'Users send friend requests and accept or reject incoming requests.',
+      'Users manage their friends list and remove existing connections.',
     ],
     techStackIds: ['spring-boot', 'java', 'react', 'typescript', 'vite', 'tailwind'],
     accentColor: '#149eca',
     heroVariant: 'feed',
     gallery: [
-      { caption: 'Posts feed', variant: 'feed' },
-      { caption: 'Friend requests', variant: 'dashboard' },
-      { caption: 'Mobile feed', variant: 'mobile' },
+      { src: '/projects/social_01.png', caption: 'Posts feed' },
+      { src: '/projects/social_03.png', caption: 'Friend requests' },
+      { src: '/projects/social_04.png', caption: 'Mobile feed' },
+    ],
+  },
+  {
+    slug: 'bacii',
+    index: 5,
+    title: 'bacii',
+    thumbnail: '/projects/project-thumbnail/BACII_thumbnail.jpeg',
+    tagline: 'A BAC II calculator designed to help Cambodian students calculate exam results.',
+    liveUrl: 'https://bacii.online',
+    summary:
+      'A responsive calculator that simplifies BAC II score calculations using examination grading criteria and saves calculation history for students. The platform has demonstrated strong organic reach, achieving 2.5K clicks from Google Search in 28 days on August 13, 2026, and is currently tracking toward 3K clicks with 110 clicks[cite: 1].',
+    idea: [
+      'bacii.online was created to help Cambodian students calculate and check their BAC II examination results more easily. Instead of calculating subject scores manually, students can enter their results and get their calculated scores through a simple interface.',
+      'The application provides structured input forms, score calculation logic, and validation to help students enter their subject results and understand their examination scores.',
+      'To make it more convenient, calculation history is saved using browser Local Storage, allowing students to revisit previous calculations without needing an account. The responsive interface also supports both desktop and mobile devices.',
+    ],
+    keyFlows: [
+      'Students enter their subject scores into the calculator.',
+      'The application validates inputs and calculates examination results based on grading criteria.',
+      'Students review their calculated scores and save their calculation history.',
+      'Students revisit previous calculations from their browser.',
+    ],
+    techStackIds: ['react-js', 'typescript', 'tailwind'],
+    accentColor: '#336791',
+    heroVariant: 'dashboard',
+    gallery: [
+      { src: '/projects/bacii_01.png', caption: 'Score calculator' },
+      { src: '/projects/bacii_02.png', caption: 'Calculation results' },
+      { src: '/projects/bacii_05.png', caption: 'Mobile layout' },
     ],
   },
 ];

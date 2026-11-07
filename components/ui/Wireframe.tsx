@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import type { WireframeVariant } from "@/data/portfolioData";
+import type { ReactNode } from 'react';
+import type { WireframeVariant } from '@/data/portfolioData';
 
 interface WireframeProps {
   variant: WireframeVariant;
@@ -8,9 +8,9 @@ interface WireframeProps {
   className?: string;
 }
 
-const INK = "#1c1b19";
-const PAPER = "#fbf9f4";
-const MUTED = "#d9d3c3";
+const INK = '#1c1b19';
+const PAPER = '#fbf9f4';
+const MUTED = '#d9d3c3';
 
 interface BlockProps {
   x: number;
@@ -131,7 +131,15 @@ function DashboardScreen({ accentColor }: { accentColor: string }) {
       ))}
       <Block x={160} y={142} width={448} height={230} />
       {barHeights.map((barHeight, barIndex) => (
-        <rect key={barIndex} x={186 + barIndex * 58} y={352 - barHeight} width={34} height={barHeight} fill={accentColor} opacity={0.85} />
+        <rect
+          key={barIndex}
+          x={186 + barIndex * 58}
+          y={352 - barHeight}
+          width={34}
+          height={barHeight}
+          fill={accentColor}
+          opacity={0.85}
+        />
       ))}
     </BrowserFrame>
   );
@@ -196,7 +204,7 @@ export function Wireframe({ variant, accentColor, label, className }: WireframeP
   const Screen = screensByVariant[variant];
 
   return (
-    <svg viewBox="0 0 640 400" role="img" aria-label={label} className={className ?? "block h-auto w-full"}>
+    <svg viewBox="0 0 640 400" role="img" aria-label={label} className={className ?? 'block h-auto w-full'}>
       <Screen accentColor={accentColor} />
     </svg>
   );

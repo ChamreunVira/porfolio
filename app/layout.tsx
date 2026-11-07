@@ -14,7 +14,7 @@ const siteUrl = 'https://virachamreun.vercel.app';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
-  title: 'Chamreun Vira | Backend Developer Portfolio',
+  title: 'Chamreun Vira | Software Developer Portfolio',
   applicationName: 'Chamreun Vira Portfolio',
   authors: [{ name: profile.name, url: siteUrl }],
   creator: profile.name,
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: 'Chamreun Vira | Backend Developer Portfolio',
+    title: 'Chamreun Vira | Software Developer Portfolio',
     description:
       'Discover my software development projects, backend engineering skills, and experience building web applications and REST APIs.',
     url: '/',
