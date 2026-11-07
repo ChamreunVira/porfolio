@@ -261,7 +261,7 @@ export const projects: Project[] = [
     slug: 'est4re',
     index: 1,
     title: 'eSt4re',
-    thumbnail: '/projects/estore_preview.png',
+    thumbnail: '/projects/project-thumbnail/eSt4re_thumbnail.jpeg',
     tagline: 'A full-stack e-commerce platform with inventory and QR payment integration.',
     liveUrl: 'https://est4re.vercel.app',
     summary:
@@ -281,16 +281,16 @@ export const projects: Project[] = [
     accentColor: '#e1232e',
     heroVariant: 'storefront',
     gallery: [
-      { src: '/projects/estore_01.png', caption: 'Online storefront' },
-      { src: '/projects/estore_02.png', caption: 'Product management' },
-      { src: '/projects/estore_03.png', caption: 'Order management' },
+      { src: '/projects/estore_infront.png', caption: 'Online storefront' },
+      { src: '/projects/estore_product_management.png', caption: 'Product management' },
+      { src: '/projects/estore_order_management.png', caption: 'Order management' },
     ],
   },
   {
     slug: 'vst4re',
     index: 2,
     title: 'vSt4re',
-    thumbnail: '/projects/ecommerce_preview.png',
+    thumbnail: '/projects/project-thumbnail/vSt4re_thumbnail.png',
     tagline: 'An e-commerce platform featuring Bakong KHQR payments.',
     liveUrl: 'https://vst4re.vercel.app',
     summary:
@@ -309,16 +309,17 @@ export const projects: Project[] = [
     accentColor: '#e1232e',
     heroVariant: 'storefront',
     gallery: [
-      { src: '/projects/ecommerce_01.png', caption: 'KHQR checkout' },
-      { src: '/projects/ecommerce_02.png', caption: 'Admin dashboard' },
-      { src: '/projects/ecommerce_08.png', caption: 'Shopping on mobile' },
+      { src: '/projects/vstore_khqr_checkout.png', caption: 'KHQR checkout' },
+      { src: '/projects/estore_admin.png', caption: 'Admin dashboard' },
+      { src: '/projects/estore_shopping_mobile.png', caption: 'Shopping on mobile' },
+      { src: '/projects/estore_shipping_mobile.png', caption: 'Shipping on mobile' },
     ],
   },
   {
     slug: 'journal',
     index: 3,
     title: 'Journal',
-    thumbnail: '/projects/journal_preview.png',
+    thumbnail: '/projects/project-thumbnail/Journal_thumbnail.jpeg',
     tagline: 'A bilingual academic journal platform for student research.',
     liveUrl: 'https://journal-academic.vercel.app',
     summary:
@@ -347,7 +348,7 @@ export const projects: Project[] = [
     slug: 'khmer-social',
     index: 4,
     title: 'Khmer Social',
-    thumbnail: '/projects/social_preview.png',
+    thumbnail: '/projects/project-thumbnail/KhmerSocial_thumbnail.jpeg',
     tagline: 'A social networking platform for sharing posts and connecting with friends.',
     liveUrl: 'http://khmer-social.vercel.app',
     summary:
@@ -376,11 +377,11 @@ export const projects: Project[] = [
     slug: 'bacii',
     index: 5,
     title: 'bacii',
-    thumbnail: '/projects/bacii_preview.png',
+    thumbnail: '/projects/project-thumbnail/BACII_thumbnail.jpeg',
     tagline: 'A BAC II calculator designed to help Cambodian students calculate exam results.',
     liveUrl: 'https://bacii.online',
     summary:
-      'A responsive calculator that simplifies BAC II score calculations using examination grading criteria and saves calculation history for students.',
+      'A responsive calculator that simplifies BAC II score calculations using examination grading criteria and saves calculation history for students. The platform has demonstrated strong organic reach, achieving 2.5K clicks from Google Search in 28 days on August 13, 2026, and is currently tracking toward 3K clicks with 110 clicks[cite: 1].',
     idea: [
       'bacii.online was created to help Cambodian students calculate and check their BAC II examination results more easily. Instead of calculating subject scores manually, students can enter their results and get their calculated scores through a simple interface.',
       'The application provides structured input forms, score calculation logic, and validation to help students enter their subject results and understand their examination scores.',
@@ -392,7 +393,7 @@ export const projects: Project[] = [
       'Students review their calculated scores and save their calculation history.',
       'Students revisit previous calculations from their browser.',
     ],
-    techStackIds: ['next-js', 'typescript', 'tailwind'],
+    techStackIds: ['react-js', 'typescript', 'tailwind'],
     accentColor: '#336791',
     heroVariant: 'dashboard',
     gallery: [

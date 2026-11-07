@@ -64,14 +64,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         ) : null}
       </header>
 
-      <figure className="relative mb-16 mt-12 border border-ink bg-card p-3 shadow-crisp sm:p-4">
-        <Tape className="-top-3.5 left-1/2 h-8 w-32 -translate-x-1/2 -rotate-1" />
+      <figure className="relative mb-16 mt-12 shadow">
         <Image
-          src={project.gallery[0].src}
+          src={project.thumbnail}
           alt={`${project.title} featured screen`}
           width={1920}
           height={1080}
-          className="h-auto max-h-[34rem] w-full object-contain"
+          className="h-auto max-h-136 w-full object-cover"
           priority
         />
         <Annotation className="absolute -bottom-10 right-2" tilt="right">
@@ -86,7 +85,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </h2>
           <div className="mt-6 space-y-4 font-sans text-body text-ink-soft">
             {project.idea.map((paragraph) => (
-              <p key={paragraph} className="max-w-[40rem]">
+              <p key={paragraph} className="max-w-160">
                 {paragraph}
               </p>
             ))}

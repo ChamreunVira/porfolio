@@ -17,7 +17,7 @@ export function Hero() {
           {profile.name}
         </h1>
         <p className="mt-4 font-mono text-mono-tag text-ink-soft">{profile.role}</p>
-        <p className="mt-6 max-w-[34rem] font-sans text-body text-ink-soft">
+        <p className="mt-6 max-w-136 font-sans text-body text-ink-soft">
           {profile.intro} Based in {profile.location} 📍
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-4">

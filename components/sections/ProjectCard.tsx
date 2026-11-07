@@ -1,8 +1,10 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { getTechSkills, type Project } from '@/data/portfolioData';
 import { Tape } from '@/components/ui/Tape';
+import { useRouter } from 'next/navigation';
 
 interface ProjectCardProps {
   project: Project;
@@ -11,19 +13,22 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   const techList = getTechSkills(project.techStackIds);
 
+  const router = useRouter();
+
   return (
     <article className="group relative flex flex-col justify-between overflow-hidden border-2 border-ink bg-card shadow-crisp-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
       <div>
         <div className="relative">
           <Tape className="-top-3 left-1/2 -translate-x-1/2 rotate-1" />
 
-          <div className="relative overflow-hidden border border-ink/40 bg-paper shadow-sm">
+          <div className="relative aspect-video overflow-hidden border border-ink/40 bg-paper shadow-sm">
             <Image
+              onClick={() => router.push(`/projects/${project.slug}`)}
               src={project.thumbnail}
               alt={`${project.title} preview`}
               width={800}
               height={450}
-              className="h-auto w-full object-contain transition-transform duration-300 group-hover:scale-102"
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-102 cursor-pointer"
             />
           </div>
         </div>

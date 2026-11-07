@@ -37,7 +37,7 @@ export function ProjectsSection() {
                     : 'border-ink/40 bg-paper text-ink-soft hover:border-ink hover:bg-card hover:text-ink',
                 )}
               >
-                {filter.label}font
+                {filter.label}
               </button>
             );
           })}

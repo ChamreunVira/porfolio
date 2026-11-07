@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { profile } from '@/data/portfolioData';
 import { Menu, X } from 'lucide-react';
+import HeaderProfile from '@/public/images/cv.jpeg';
 
 const navigationLinks = [
   { href: '#projects', id: 'projects', label: 'projects', num: '01' },
@@ -56,13 +58,14 @@ export function SiteHeader() {
       <div className="page-container flex items-center justify-between gap-4 py-3 px-4 sm:px-8">
         {/* Brand / Logo */}
         <div className="flex items-center gap-3">
-          <Link
-            href="/"
-            className="group relative font-hand text-3xl font-bold leading-none text-ink transition-transform hover:-rotate-1"
-          >
-            <span className="relative z-10">{profile.name.toLowerCase()}</span>
-            {/* Red pen marker highlight bar on hover */}
-            <span className="absolute bottom-0 left-0 h-2 w-0 bg-red-400/30 transition-all duration-300 group-hover:w-full" />
+          <Link href="/" className="group relative block transition-transform hover:-rotate-1">
+            <Image
+              src={HeaderProfile}
+              alt={profile.name}
+              width={40}
+              height={40}
+              className="h-10 w-10 rounded-full object-cover aspect-square"
+            />
           </Link>
 
           {/* Status Badge */}
