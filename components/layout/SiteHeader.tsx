@@ -64,7 +64,7 @@ export function SiteHeader() {
               alt={profile.name}
               width={40}
               height={40}
-              className="h-10 w-10 rounded-full object-cover aspect-square"
+              className="h-8 w-8 rounded-full object-cover aspect-square"
             />
           </Link>
 
