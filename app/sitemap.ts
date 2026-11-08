@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { projects } from '@/data/portfolioData';
 
-const BASE_URL = 'https://virachamreun.vercel.app';
+const BASE_URL = 'https://chamreunvira.me';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [

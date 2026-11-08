@@ -9,7 +9,7 @@ const caveat = Caveat({ subsets: ['latin'], variable: '--font-caveat', display: 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains-mono', display: 'swap' });
 
-const siteUrl = 'https://virachamreun.vercel.app';
+const siteUrl = 'https://chamreunvira.me';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
