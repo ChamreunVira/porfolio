@@ -311,7 +311,7 @@ export const projects: Project[] = [
     gallery: [
       { src: '/projects/vstore_khqr_checkout.png', caption: 'KHQR checkout' },
       { src: '/projects/estore_admin.png', caption: 'Admin dashboard' },
-      { src: '/projects/estore_shopping_mobile.png', caption: 'Shopping on mobile' },
+      { src: '/projects/estore_shoping_mobile.png', caption: 'Shopping on mobile' },
       { src: '/projects/estore_shipping_mobile.png', caption: 'Shipping on mobile' },
     ],
   },
