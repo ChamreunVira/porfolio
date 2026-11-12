@@ -62,9 +62,9 @@ export function SiteHeader() {
             <Image
               src={HeaderProfile}
               alt={profile.name}
-              width={40}
-              height={40}
-              className="h-8 w-8 rounded-full object-cover aspect-square"
+              width={50}
+              height={50}
+              className="h-9 w-8 rounded-full object-cover aspect-square"
             />
           </Link>
 
