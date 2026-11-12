@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { profile } from '@/data/portfolioData';
 import { Menu, X } from 'lucide-react';
-import HeaderProfile from '@/public/images/cv.jpeg';
+import HeaderProfile from '@/public/images/header_logo.png';
 
 const navigationLinks = [
   { href: '#projects', id: 'projects', label: 'projects', num: '01' },
